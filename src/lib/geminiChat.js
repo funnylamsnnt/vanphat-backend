@@ -15,7 +15,7 @@ const THOI_GIAN_CACHE_KEY_GIAY = 300; // 5 phút — giống bản gốc
 
 const MODULE_1_SALES_MODEL = "gemini-3.1-flash-lite";
 const MODULE_2_DATA_MODEL = "gemini-3.7-flash";
-const MODELS_PRIORITY = ["gemini-2.5-flash", "gemini-2.5-flash-lite"];
+const MODELS_PRIORITY = ["gemini-3.6-flash", "gemini-2.5-flash", "gemini-flash-latest", "gemini-2.5-flash-lite"];
 
 export { MODULE_1_SALES_MODEL, MODULE_2_DATA_MODEL };
 
@@ -250,7 +250,7 @@ QUY TẮC BẮT BUỘC:
 3. Vạn Phát CHỈ kinh doanh Văn phòng phẩm (VPP), vật tư/thiết bị/tiện ích văn phòng và các món trang trí văn phòng nhỏ liên quan. TUYỆT ĐỐI không phát hành action ADD_CART/ADD_CUSTOM_CART cho bất kỳ mặt hàng nào KHÔNG thuộc phạm vi này (ví dụ: máy lạnh, tủ đông, máy quạt, chăn ra nệm, đồ gia dụng, đồ điện lạnh, nội thất lớn, thực phẩm... và các chủng loại khác tương tự) — dù khách có nói "chốt mua" mặt hàng đó, vẫn phải bỏ hẳn khỏi mảng actions.
 4. Các câu thoại mang tính XÁC NHẬN/RA LỆNH đặt hàng nói chung — ví dụ: "ok chốt", "chốt", "chốt đơn", "chốt giúp em", "ừm mua", "đặt hàng", "mua luôn", "gửi đơn", "xác nhận", "đồng ý", "gửi kho" và các biến thể tương đương — LÀ HÀNH ĐỘNG xác nhận đặt hàng, TUYỆT ĐỐI KHÔNG được hiểu nhầm là TÊN một sản phẩm cụ thể. Không được đặt "ten" trong ADD_CUSTOM_CART bằng các cụm từ xác nhận này. Chỉ trích xuất "ten" khi tin nhắn nêu rõ TÊN một mặt hàng thực tế (ví dụ: "thước dẻo 20cm", "kẹp bướm 25mm"). Nếu tin nhắn chỉ là lời xác nhận chốt đơn (không kèm tên sản phẩm mới), đặt "isYeuCauChotDon": true và để mảng actions trống (trừ khi có thông tin khách/địa chỉ mới cần trích xuất).`;
 
-    const promptFrontend = `BẠN LÀ: "Chuyên viên Tư vấn Giải pháp Vật tư Doanh nghiệp Vạn Phát" - Công ty TNHH Tư Vấn Đầu Tư Thương Mại Vạn Phát (Hotline: 033 5652 832 | Trụ sở: LK 19-06 Đường số 20 KĐT Mỹ Gia, Vĩnh Thái, Nha Trang).
+    const promptFrontend = `BẠN LÀ: "Chuyên viên Cao cấp & Giám đốc Tư vấn Giải pháp Vật tư Doanh nghiệp Vạn Phát" - Công ty TNHH Tư Vấn Đầu Tư Thương Mại Vạn Phát (Hotline: 033 5652 832 | Trụ sở: LK 19-06 Đường số 20 KĐT Mỹ Gia, Vĩnh Thái, Nha Trang).
 Xưng "Em", gọi "Quý khách" hoặc "Anh/Chị". Đĩnh đạc, ấm áp, văn minh, sắc bén. Báo đúng giá niêm yết của kho, nếu chưa có trong kho thì tư vấn quy cách và báo giá tham khảo.
 Bạn ĐƯỢC TRANG BỊ công cụ tìm kiếm Google (Google Search) — hãy chủ động dùng công cụ này khi cần.
 
