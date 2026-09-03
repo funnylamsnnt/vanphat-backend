@@ -1,0 +1,30 @@
+name = "vanphat-backend"
+main = "src/index.js"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "559ad7c1e9b20ddafe408ef0da15b012"
+
+# Lưu ảnh sản phẩm khách/AI thêm mới + PDF phiếu giao hàng bằng Workers KV
+# (thay cho Google Drive — tránh vướng quota lưu trữ 0 byte mặc định của service account;
+# dùng KV thay vì R2 vì R2 cần bật gói riêng (dù free tier) trên tài khoản Cloudflare)
+[[kv_namespaces]]
+binding = "ASSETS"
+id = "97c7c5e21ccb424b9d21a0a4d429c03c"
+
+# Cache 5 phút danh sách API key Gemini đang hoạt động (thay CacheService.getScriptCache())
+[[kv_namespaces]]
+binding = "CACHE"
+id = "4fc5bbfc943a4d86b0dd2c8a03b8c66c"
+
+[vars]
+SPREADSHEET_ID = "1EEgrRNudf1BA8DCvtRbyUs_D16fYHccA97Y6SsXfZH4"
+ALLOWED_ORIGIN = "https://vanphatcompany.vn"
+EMAIL_KHO = "congtytnhhvanphat999@gmail.com"
+EMAIL_FROM = "Vạn Phát Pro <donhang@vanphatcompany.vn>"
+CF_ACCOUNT_ID = "559ad7c1e9b20ddafe408ef0da15b012"
+API_BASE_URL = "https://vanphat-backend.funnylams-nnt.workers.dev"
+
+# Secrets (đặt bằng `wrangler secret put <TÊN>`, KHÔNG ghi vào file này):
+#   GOOGLE_SERVICE_ACCOUNT_KEY   -> toàn bộ nội dung file JSON key service account
+#   RESEND_API_KEY               -> API key của Resend dùng để gửi email
+#   CF_BROWSER_RENDERING_TOKEN   -> API Token phạm vi riêng "Browser Rendering: Edit" (sinh PDF)
